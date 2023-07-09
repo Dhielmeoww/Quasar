@@ -1,6 +1,6 @@
-# Quasar App (phynature)
+# Quasar App (phynature-app)
 
-Physics for nature
+A Quasar Project
 
 ## Install the dependencies
 ```bash

@@ -2,7 +2,7 @@ package repository
 
 import "phynatureApi/entity"
 
-type Publisher_repo interface {
+type PublisherRepo interface {
 	CreatePublisher(publisher *entity.Publisher) error
 	GetAllPublisher() ([]entity.Publisher, error)
 }

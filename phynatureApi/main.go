@@ -24,10 +24,24 @@ func main() {
 	articleService := service.NewArticleService(articleRepo)
 	articleController := controller.NewArticleController(articleService)
 
+	kategoriRepo := repository.NewKategoriRepository(db)
+	kategoriService := service.NewKategoriService(kategoriRepo)
+	kategoriController := controller.NewKategoriController(kategoriService)
+
+	publisherRepo := repository.NewPublisherRepository(db)
+	publisherService := service.NewPublisherService(*publisherRepo)
+	publisherController := controller.NewPublisherController(publisherService)
+
 	router := gin.Default()
 
 	router.POST("/article", articleController.CreateArticle)
 	router.GET("/article", articleController.GetAllArticle)
+
+	router.POST("/kategori", kategoriController.CreateKategori)
+	router.GET("/kategori", kategoriController.GetAllKategori)
+
+	router.POST("/publisher", publisherController.CreatePublisher)
+	router.GET("/publisher", publisherController.GetAllPublisher)
 
 	log.Printf("Starting %s server on port %s\n", cfg.AppName, cfg.AppPort)
 	err := router.Run(":" + cfg.AppPort)

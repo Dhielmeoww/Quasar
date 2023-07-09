@@ -2,7 +2,7 @@ package repository
 
 import "phynatureApi/entity"
 
-type Kategori_repo interface {
+type KategoriRepo interface {
 	CreateKategori(kategori *entity.Kategori) error
 	GetAllKategori() ([]entity.Kategori, error)
 }

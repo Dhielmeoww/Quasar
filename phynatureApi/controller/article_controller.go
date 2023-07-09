@@ -31,7 +31,12 @@ func (c *ArticleController) CreateArticle(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
+	}
 
+	err = c.articleService.CreateArticle(&article)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
 	}
 
 	ctx.JSON(http.StatusCreated, gin.H{"data": article})

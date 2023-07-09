@@ -24,7 +24,7 @@ func (r *ArticleRepository) CreateArticle(article *entity.Article) error {
 
 func (r *ArticleRepository) GetAllArticle() ([]entity.Article, error) {
 	var articles []entity.Article
-	err := r.db.Find(&articles).Error
+	err := r.db.Preload("Kategori").Preload("Publisher").Find(&articles).Error
 	if err != nil {
 		return nil, err
 	}
